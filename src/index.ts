@@ -5,7 +5,4 @@ import { Domineering } from "./domineering/model/domineering";
 
 const model = new Domineering("vplayer", "hplayer");
 
-console.log(model.board);
-console.log(model.players);
-
 

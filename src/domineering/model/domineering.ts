@@ -21,7 +21,6 @@ class Domineering {
   piecesPlaced: number;
   players: Player[];
   activePlayer: number;
-  gameOver: boolean;
 
   constructor(vplayerName: string, hplayerName: string) {
     this.board = [];
@@ -39,7 +38,14 @@ class Domineering {
     this.piecesPlaced = 0;
     this.players = [vplayer, hplayer];
     this.activePlayer = Math.floor(Math.random() * this.players.length);
-    this.gameOver = false;
+  }
+
+  isGameOver(): boolean {
+    return this.piecesPlaced == Domineering.MAX_PIECES_PLAYED;
+  }
+
+  switchPlayer(): void {
+    this.activePlayer = this.activePlayer == VPLAYER_INDEX ? HPLAYER_INDEX : VPLAYER_INDEX;
   }
 
 }

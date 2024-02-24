@@ -13,5 +13,3 @@ startBtnElt.addEventListener("click", () => {
   menuDisplayElt.classList.toggle("hidden");
   gameDisplayElt.classList.toggle("hidden");
 });
-
-// console.log(menuDisplayElt);

@@ -5,4 +5,3 @@ import { Domineering } from "./domineering/model/domineering";
 
 const model = new Domineering("vplayer", "hplayer");
 
-

@@ -24,8 +24,9 @@ body {
 }
 
 h2 {
-  font-size: 2vw;
+  font-size: 2rem;
   margin: 5px;
+  display: flex;
 }
 
 button {
@@ -43,6 +44,7 @@ button {
 button:hover {
   background-color: #eaa1a7;
   cursor: pointer;
+  color: white;
 }
 
 #container--menu {
@@ -56,6 +58,21 @@ button:hover {
 }
 
 /* Game */
+
+#container--heading{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin: auto;
+}
+
+#button--reset{
+    font-size: 2rem;
+    padding: 20px 40px;
+}
+
 table {
   border: 1px solid black;
   width: 60vw;

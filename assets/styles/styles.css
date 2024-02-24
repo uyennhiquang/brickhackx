@@ -45,7 +45,7 @@ button:hover {
   cursor: pointer;
 }
 
-#display--menu {
+#container--menu {
   display: flex;
   flex-direction: column;
   align-items: center;

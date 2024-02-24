@@ -10,7 +10,7 @@ const menuDisplayElt = document.getElementById("display--menu");
 const gameDisplayElt = document.getElementById("display--game");
 
 startBtnElt.addEventListener("click", () => {
-  // menuDisplayElt.classList.toggle("hidden");
+  menuDisplayElt.classList.toggle("hidden");
   gameDisplayElt.classList.toggle("hidden");
 });
 

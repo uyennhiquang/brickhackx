@@ -4,56 +4,77 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Domineering</title>
-    <link rel = "stylesheet" href = "assets\styles\styles.css">
   </head>
   <body>
-    <script src="bundle.js"></script>
-    <header>
-      <h1 id = "main_title">Domineering</h1>
-    </header>
     <main>
-      <h2 class = "player-status">Player Name's Turn</h2>
-      <div class = "button-container">
-        <button type = "button" class = "start-button">Start</button>
-        <button type = "button" class = "how-to-button">How to Play</button>
+      <div id="display--menu">
+        <h1 id="title--main">Domineering</h1>
+        <section id="container--input-text">
+          <div>
+            <p>Vertical</p>
+            <input
+              type="text"
+              name="v"
+              id="v"
+              placeholder="Enter player name"
+            />
+          </div>
+          <div>
+            <p>Horizontal</p>
+            <input
+              type="text"
+              name="h"
+              id="h"
+              placeholder="Enter player name"
+            />
+          </div>
+        </section>
+        <button type="button" id="button--start">Start</button>
+        <button type="button" id="button--help">How to Play</button>
       </div>
-      <table>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td> 
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
+
+      <div id="display--game" class="hidden">
+        <h2 class="player-status">Player Name's Turn</h2>
+        <table>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
     </main>
+
+    <script src="bundle.js"></script>
   </body>
 </html>

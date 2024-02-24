@@ -84,6 +84,7 @@ class Domineering {
       else{
         this.board[row][col+1] = Domineering.FILLED;
       }
+      this.switchPlayer();
       
     }
   }

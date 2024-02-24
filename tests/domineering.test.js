@@ -172,3 +172,23 @@ test('validates for filled square, valid, horizontal', () => {
   expect(game.validateMove(rowPlaced, colPlaced, direction)).toBe(expected);
 });
 
+test('validates prope', () => {
+  const vplayerName = "vplayer";
+  const hplayerName = "hplayer";
+  const game = new Domineering(vplayerName, hplayerName);
+  
+  const rowFilled = 0;
+  const colFilled = 1;
+
+  const rowPlaced = 1;
+  const colPlaced = 1;
+
+  const direction = Direction.Horizontal;
+
+  const expected = true;
+
+  game.board[rowFilled][colFilled] = Domineering.FILLED;
+
+  expect(game.validateMove(rowPlaced, colPlaced, direction)).toBe(expected);
+});
+

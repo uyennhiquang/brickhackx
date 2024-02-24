@@ -63,8 +63,30 @@ class Domineering {
         ? Domineering.HPLAYER_INDEX
         : Domineering.VPLAYER_INDEX;
   }
-
-  makeMove(row: number, col: number): void {}
+  /**
+   * Determines the active player so that their direction can be determined.
+   * Checks if the move specified at row, col is valid. There are two cases:
+   * If the move is invalid, the move is not made.
+   * If the  move is valid, the spaces on the board that the piece takes up will be changed to 1 to indicate being filled.
+   * If the active player places vertically, the piece will be placed vertically.
+   * If the active player places horizontally, the piece will be placed horizontally.
+   * The position clicked will always fill, if valid move. 
+   * @param row 
+   * @param col 
+   */
+  makeMove(row: number, col: number): void {
+    const activePlayer = this.players[this.activePlayer];
+    if (this.validateMove(row, col, activePlayer.direction)){
+      this.board[row][col] = Domineering.FILLED;
+      if(activePlayer.direction == Direction.Vertical){
+        this.board[row+1][col] = Domineering.FILLED;
+      }
+      else{
+        this.board[row][col+1] = Domineering.FILLED;
+      }
+      
+    }
+  }
 
   /**
    * Checks whether or not it's possible to place a piece onto the board. There are 3 cases:

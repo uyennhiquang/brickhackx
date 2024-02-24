@@ -1,63 +1,73 @@
-body{
-    background-color: #eceffc;
-    flex-direction: column;
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-    font-size: 18px;          
+html,
+body {
+  height: 100%;
+  width: 100%;
 }
 
-h1{
-    color: #6d83e6;
-    text-align: center;
-    display: flex;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 10vw;
-    margin-top: 30px;
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #eceffc;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
 }
 
-h2{
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 2vw;
-    margin: 5px;
-    display: flex;
+/* Menu */
+
+#title--main {
+  color: #6d83e6;
+  text-align: center;
+  display: flex;
+  font-size: 5rem;
 }
 
-button{
-    color: #c30211;
-    background-color: rgb(252, 252, 252);
-    font-size: 10vw;
-    display: flex;
-    font-family: 'Courier New', Courier, monospace;
-    margin-top: 100px;
-    border: 1px solid #c30211; 
-    border-radius: 12px;
-    display: none;
+h2 {
+  font-size: 2vw;
+  margin: 5px;
 }
 
-button:hover{
-    background-color: #eaa1a7;
+button {
+  color: #c30211;
+  background-color: rgb(252, 252, 252);
+  font-size: 3rem;
+  border: 1px solid #c30211;
+  border-radius: 12px;
+
+  display: flex;
+  font-family: "Courier New", Courier, monospace;
+  padding: 30px 50px;
 }
 
-.button-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+button:hover {
+  background-color: #eaa1a7;
+  cursor: pointer;
 }
 
-table{
-    border: 1px solid black;
-    width: 60vw;
-    height: 60vh;
-    margin: 50px;
+#container--menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin: auto;
+
 }
 
-tr, td{
-    border: 1px solid black;
+/* Game */
+table {
+  border: 1px solid black;
+  width: 60vw;
+  height: 60vh;
+  margin: 50px;
 }
 
+tr,
+td {
+  border: 1px solid black;
+}
 
-
-
-
+.hidden {
+  display: none;
+}

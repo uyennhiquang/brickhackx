@@ -11,6 +11,7 @@ class Player {
     this.name = name;
     this.direction = direction;
   }
+
 }
 
 export { Direction, Player };

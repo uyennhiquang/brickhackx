@@ -51,11 +51,66 @@ class Domineering {
   }
 
   /**
-   *  The game is over if the number of pieces placed is floor(<total_squares / 2>). When a player makes a move the game checks whether or not the game is over after the move is successfully made. If it is, the other player loses.
+   * Game over if current player cannot make a move
    * @returns gameOverStatus
    */
-  isGameOver(): boolean {
-    return this.piecesPlaced == Domineering.MAX_PIECES_PLAYED;
+  isGameOver(): void {
+    let gameOver = true;
+    const currentDirection = this.players[this.activePlayer].direction;
+
+    const endingRow =
+      currentDirection == Direction.Vertical
+        ? Domineering.MAX_ROWS - 1
+        : Domineering.MAX_ROWS;
+    const endingCol =
+      currentDirection == Direction.Vertical
+        ? Domineering.MAX_COLS
+        : Domineering.MAX_COLS - 1;
+
+    for (let row = 0; row < endingRow; row++) {
+      for (let col = 0; col < endingCol; col++) {
+        if (currentDirection == Direction.Vertical) {
+          if (
+            this.board[row][col] == Domineering.EMPTY &&
+            this.board[row + 1][col] == Domineering.EMPTY
+          ) {
+            gameOver = false;
+            break;
+          }
+        } else {
+          if (
+            this.board[row][col] == Domineering.EMPTY &&
+            this.board[row][col + 1] == Domineering.EMPTY
+          ) {
+            gameOver = false;
+            break;
+          }
+        }
+      }
+      if (!gameOver) {
+        break;
+      }
+    }
+
+    if (gameOver) {
+      // Notify the observer the winner
+      // console.log(
+      // this.players[
+      // this.activePlayer
+      // ? Domineering.VPLAYER_INDEX
+      // : Domineering.HPLAYER_INDEX
+      // ].name,
+      // "is the winner!"
+      // );
+      console.log(
+        this.players[
+          this.activePlayer
+            ? Domineering.VPLAYER_INDEX
+            : Domineering.HPLAYER_INDEX
+        ].name,
+        "is the winner!"
+      );
+    }
   }
 
   switchPlayer(): void {
@@ -71,23 +126,24 @@ class Domineering {
    * If the  move is valid, the spaces on the board that the piece takes up will be changed to 1 to indicate being filled.
    * If the active player places vertically, the piece will be placed vertically.
    * If the active player places horizontally, the piece will be placed horizontally.
-   * The position clicked will always fill, if valid move. 
-   * @param row 
-   * @param col 
+   * The position clicked will always fill, if valid move.
+   * @param row
+   * @param col
    */
   makeMove(row: number, col: number): void {
     const activePlayer = this.players[this.activePlayer];
-    if (this.validateMove(row, col, activePlayer.direction)){
+    this.isGameOver();
+    if (this.validateMove(row, col, activePlayer.direction)) {
       this.board[row][col] = Domineering.FILLED;
-      if(activePlayer.direction == Direction.Vertical){
-        this.board[row+1][col] = Domineering.FILLED;
-      }
-      else{
-        this.board[row][col+1] = Domineering.FILLED;
+      if (activePlayer.direction == Direction.Vertical) {
+        this.board[row + 1][col] = Domineering.FILLED;
+      } else {
+        this.board[row][col + 1] = Domineering.FILLED;
       }
 
       this.notify(row, col, activePlayer.direction);
       this.switchPlayer();
+      this.isGameOver();
       
     }
   }
@@ -100,9 +156,9 @@ class Domineering {
    * If horizontal piece
    *  + if the square to be placed or the square to the right of it -> false
    * Otherwise, true
-   * @param row 
-   * @param col 
-   * @param direction 
+   * @param row
+   * @param col
+   * @param direction
    * @returns valid
    */
   validateMove(row: number, col: number, direction: Direction): boolean {

@@ -14,10 +14,6 @@ class Domineering {
   static EMPTY = 0;
   static FILLED = 1;
 
-  static MAX_PIECES_PLAYED = Math.floor(
-    (Domineering.MAX_ROWS * Domineering.MAX_COLS) / 2
-  );
-
   board: number[][];
   piecesPlaced: number;
   players: Player[];
@@ -53,25 +49,25 @@ class Domineering {
   }
 
   /**
-   * Game over if current player cannot make a move
-   * @returns gameOverStatus
+   * The isGameOver() is called every time a move is made to ensure that the game is definitely solved, meaning the next player cannot place their piece after the current player placed theirs
    */
   isGameOver(): void {
     let gameOver = true;
-    const currentDirection = this.players[this.activePlayer].direction;
+    this.switchPlayer();
+    const nextDirection = this.players[this.activePlayer].direction;
 
     const endingRow =
-      currentDirection == Direction.Vertical
+      nextDirection == Direction.Vertical
         ? Domineering.MAX_ROWS - 1
         : Domineering.MAX_ROWS;
     const endingCol =
-      currentDirection == Direction.Vertical
+      nextDirection == Direction.Vertical
         ? Domineering.MAX_COLS
         : Domineering.MAX_COLS - 1;
 
     for (let row = 0; row < endingRow; row++) {
       for (let col = 0; col < endingCol; col++) {
-        if (currentDirection == Direction.Vertical) {
+        if (nextDirection == Direction.Vertical) {
           if (
             this.board[row][col] == Domineering.EMPTY &&
             this.board[row + 1][col] == Domineering.EMPTY
@@ -94,17 +90,14 @@ class Domineering {
       }
     }
 
+    this.switchPlayer();
     if (gameOver) {
       // Notify the observer the winner
 
-      this.winner =
-        this.players[
-          this.activePlayer
-            ? Domineering.VPLAYER_INDEX
-            : Domineering.HPLAYER_INDEX
-        ];
+      this.winner = this.players[this.activePlayer];
       console.log(this.winner.name, "is the winner!");
     }
+
   }
 
   switchPlayer(): void {
@@ -135,9 +128,10 @@ class Domineering {
         this.board[row][col + 1] = Domineering.FILLED;
       }
 
+      this.isGameOver();
       this.notify(row, col, activePlayer, this);
       this.switchPlayer();
-      this.isGameOver();
+      // this.isGameOver();
     }
   }
 

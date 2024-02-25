@@ -11,8 +11,6 @@ const menuDisplayElt = document.getElementById("display--menu");
 const gameDisplayElt = document.getElementById("display--game");
 
 const tBodyEl = document.getElementById("table--game").firstElementChild;
-console.log(tBodyEl);
-
 
 startBtnElt.addEventListener("click", () => {
   const vPlayerName = (<HTMLInputElement>document.getElementById("v")).value;
@@ -35,3 +33,7 @@ startBtnElt.addEventListener("click", () => {
     }
   }
 });
+
+const gui = document;
+
+export { gui };

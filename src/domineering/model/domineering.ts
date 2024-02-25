@@ -1,4 +1,5 @@
 import { Direction, Player } from "./player";
+import { updateSquareToGUI } from "../controller/updateSquareToGUI";
 
 /**
  * Domineering is implemented as a game played on a 5x5 board; each player places a domino of their direction -- either horizontal or vertical. The game is over if a player is unable to place their piece, in which case that player loses the game.
@@ -84,6 +85,8 @@ class Domineering {
       else{
         this.board[row][col+1] = Domineering.FILLED;
       }
+
+      this.notify(row, col, activePlayer.direction);
       this.switchPlayer();
       
     }
@@ -130,6 +133,10 @@ class Domineering {
     }
 
     return valid;
+  }
+
+  notify(row: number, col: number, direction: Direction): void {
+    updateSquareToGUI(row, col, direction);
   }
 }
 

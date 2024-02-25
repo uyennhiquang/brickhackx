@@ -3,6 +3,7 @@ import "../assets/styles/styles.css";
 
 import { Domineering } from "./domineering/model/domineering";
 import { makeMoveFromGUI } from "./domineering/controller/makeMoveFromGUI";
+import { Direction } from "./domineering/model/player";
 
 let model: Domineering;
 
@@ -32,6 +33,13 @@ startBtnElt.addEventListener("click", () => {
       })
     }
   }
+
+  const playerStatusElt = document.getElementById("status--player");
+  const playerStatusName = model.players[model.activePlayer].name;
+
+  playerStatusElt.innerHTML = playerStatusName + "'s turn"; 
+
+
 });
 
 const gui = document;

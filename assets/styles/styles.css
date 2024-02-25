@@ -88,3 +88,11 @@ td {
 .hidden {
   display: none;
 }
+
+.filled--vertical {
+  background-color: #aab7f2;
+}
+
+.filled--horizontal {
+  background: #c30211;
+}

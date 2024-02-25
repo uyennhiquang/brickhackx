@@ -6,10 +6,12 @@ enum Direction {
 class Player {
   name: string;
   direction: Direction;
+  winning: boolean;
 
   constructor(name: string, direction: Direction) {
     this.name = name;
     this.direction = direction;
+    this.winning = false;
   }
 
 }

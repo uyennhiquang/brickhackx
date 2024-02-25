@@ -22,6 +22,7 @@ class Domineering {
   piecesPlaced: number;
   players: Player[];
   activePlayer: number;
+  winner: Player;
 
   /**
    *  The game begins by taking two names of the players: one for the vertical player, another for horizontal. When instantiated:
@@ -48,6 +49,7 @@ class Domineering {
     this.piecesPlaced = 0;
     this.players = [vplayer, hplayer];
     this.activePlayer = Math.floor(Math.random() * this.players.length);
+    this.winner = null;
   }
 
   /**
@@ -94,22 +96,14 @@ class Domineering {
 
     if (gameOver) {
       // Notify the observer the winner
-      // console.log(
-      // this.players[
-      // this.activePlayer
-      // ? Domineering.VPLAYER_INDEX
-      // : Domineering.HPLAYER_INDEX
-      // ].name,
-      // "is the winner!"
-      // );
-      console.log(
+
+      this.winner =
         this.players[
           this.activePlayer
             ? Domineering.VPLAYER_INDEX
             : Domineering.HPLAYER_INDEX
-        ].name,
-        "is the winner!"
-      );
+        ];
+      console.log(this.winner.name, "is the winner!");
     }
   }
 
@@ -141,10 +135,9 @@ class Domineering {
         this.board[row][col + 1] = Domineering.FILLED;
       }
 
-      this.notify(row, col, activePlayer.direction);
+      this.notify(row, col, activePlayer, this);
       this.switchPlayer();
       this.isGameOver();
-      
     }
   }
 
@@ -191,8 +184,8 @@ class Domineering {
     return valid;
   }
 
-  notify(row: number, col: number, direction: Direction): void {
-    updateSquareToGUI(row, col, direction);
+  notify(row: number, col: number, player: Player, model: Domineering): void {
+    updateSquareToGUI(row, col, player, model);
   }
 }
 
